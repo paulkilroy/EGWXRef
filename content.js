@@ -1,4 +1,4 @@
-
+// Test of first commit
 //crossref["Genesis"][0].forEach( verseWriter );
 var bookAndChapter = document.getElementsByClassName("passage-display-bcv")[0].innerHTML;
 //alert(bookAndChapter);
