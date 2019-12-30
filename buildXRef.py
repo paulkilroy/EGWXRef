@@ -3,6 +3,9 @@ import time
 import re
 import json
 
+# Need to fix to make the book chapter name 1Corinthians 1 -> 1 Corinthians 1
+# further commented XXX BUG below
+
 class QuotesSpider(scrapy.Spider):
 	name = "quotes"
 	baseURL = "https://m.egwwritings.org/"
@@ -96,6 +99,8 @@ class QuotesSpider(scrapy.Spider):
 
 		print("NEW StartId:" +str(startId))
 		bookAndChapter = response.selector.xpath('//*[@id="'+str(startId)+'"]/span/text()').get()
+		# XXX BUG need to fix "1Samuel 1"  into "1 Samuel 1" etc..
+		# XXX BUG basically if the first character is a number, insert a space after it
 		if not bookAndChapter is None:
 			print("bookAndChapter:", bookAndChapter)
 			book, chapter = re.split('\W+', bookAndChapter)
